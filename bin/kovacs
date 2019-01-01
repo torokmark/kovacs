@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'kovacs'
+
+puts Kovacs::VERSION
+
+name = Kovacs.config do |config|
+  config.family = :jancsi #'Nagy'
+  config.forename = 'Elek'
+  config.middle = 'Karoly'
+end.generate
+
+p name
+

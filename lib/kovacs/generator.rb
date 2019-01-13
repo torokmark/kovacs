@@ -6,18 +6,22 @@ module Kovacs
     end
     
     def generate
-      #"#{ @config.family } #{ @config.middle } #{ @config.forename}"
-      ret = {family: '', middle: '', forename: ''}
-      ret[:family] = evaluate(@config.family)
-      ret[:middle] = evaluate(@config.middle)
-      ret[:forename] = evaluate(@config.forename)
+      
+      check_input(@config)
+
+      ret = {family: nil, middle: nil, given: nil}
+      ret[:family] = evaluate(@config.family, :family)
+      #ret[:middle] = evaluate_given(@config.middle, :given)
+      #ret[:given] = evaluate_given(@config.given, :given)
+      
+      if ret
     end
 
     def info
       {
         family: @config.family,
         middle: @config.middle,
-        forename: @config.forename,
+        given: @config.given,
         nationality: [:british],
         gender: ''
       }
@@ -25,13 +29,27 @@ module Kovacs
 
     private
 
-    def evaluate(name)
-      if name.is_a? String
+    def evaluate(name, type=:given)
+      if input.is_a? String
         name
-      elsif name.is_a? Symbol
-        
-      elsif name.is_a? Array
+      elsif input.is_a? Symbol
+        if type == :given
+          name = load_givenname(input)
+        end
+      elsif input.is_a? Array
 
+      else
+        nil
+      end
+    end
+
+    def check_input(config)
+      if config.nationality.nil? && 
+          config.family.nil? &&
+          config.middle.nil? &&
+          config.given.nil? &&
+          config.gender.nil?
+        raise 'Empty config is not allowed!'
       end
     end
   end

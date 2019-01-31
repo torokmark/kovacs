@@ -2,7 +2,7 @@
 
 require 'kovacs'
 
-#p Kovacs.generate.to_h
+p Kovacs.generate.to_h
 
 person = Kovacs.config do |config|
   config.surname     = :hungarian
@@ -14,7 +14,6 @@ end.generate
 
 p person
 
-=begin
 p Kovacs.forename
 p Kovacs.forename('Jancsi')
 p Kovacs.forename(:hungarian)
@@ -23,4 +22,3 @@ p Kovacs.forename(['Jancsi', 'Julcsi'])
 p Kovacs.forename([:hungarian, :slovak])
 p Kovacs.forename([:hungarian, :slovak], :female)
 #p Kovacs.forename([:hungarian, 'slovak'])
-=end

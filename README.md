@@ -1,8 +1,6 @@
 # Kovacs
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/kovacs`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Kovacs is a simple gem that helps you generate fake data for a person entity based on real life names, nationalities and sex.
 
 ## Installation
 
@@ -22,7 +20,69 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### 1. Simpliest
+
+Just simply generate a person. It takes a nationality from the listed nationalities placed inside the `resources` folder. (nationality has to be a folder as well.)  
+Then it generates a sex and based on these two, it generates names.
+
+```ruby
+p Kovacs.generate
+# => #<Kovacs::Person:0x0000560e4a3b54f8 @nationality=:slovak, @sex=:male, @forename="Elek", @middle_name="Erno", @surname="Toth">
+p Kovacs.generate.to_h
+# => {:nationality=>:slovak, :sex=>:male, :forename=>"Miroslav", :middle_name=>"Jan", :surname=>"Cvikota"} 
+```
+
+### 2. Generate just one of the attributes
+
+```ruby
+p Kovacs.forename(['Jancsi', 'Julcsi'])
+# => "Jancsi" 
+```
+
+### 3. Generate via config
+
+```ruby
+person = Kovacs.config do |config|
+  config.surname     = :hungarian
+  config.forename    = 'Elek'
+  config.middle_name = ['Karoly', 'Erno', 'Ervin']
+  config.sex         = :male
+  config.nationality = [:hungarian, :slovak]
+end.generate
+
+p person
+# => #<Kovacs::Person:0x0000560e4a3b54f8 @nationality=:slovak, @sex=:male, @forename="Elek", @middle_name="Erno", @surname="Toth"> 
+```
+
+### 4. Acceptable arguments
+
+1. *None*: will be generated based on the nationalities, sex and list of names placed in `resources`.
+
+    Kovacs.forename
+
+2. *Simple String*: the value will be the string argument itself.
+
+    Kovacs.forename('Jancsi')
+
+3. *Symbol*: symbol represents the nationality. Value will be generated based on the specified nationality, and sex which is randomly generated.
+
+    Kovacs.forename(:hungarian)
+
+4. *Nationality and sex*: Value will be generated based on the spedified nationality and the specified sex.
+
+    Kovacs.forename(:hungarian, :male)
+
+5. *Array of Strings*: One of them will be taken randomly.
+
+    Kovacs.forename(['Jancsi', 'Julcsi'])
+
+6. *Array of Symbols*: One of them will be taken randomly, name is taken randomly based on that nationality.
+
+    Kovacs.forename([:hungarian, :slovak])
+
+7. *Array of Symbols and sex*: Nationality will be taken randomly, name is taken randomly based on that nationality and specified sex. 
+
+  Kovacs.forename([:hungarian, :slovak], :female)
 
 ## Development
 

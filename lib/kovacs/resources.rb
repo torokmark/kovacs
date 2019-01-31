@@ -9,17 +9,17 @@ module Kovacs::Resources
   end
 
   def forenames(nationality, sex)
-    resource_path = "#{ Kovacs.root }/resources/#{ nationality }/#{ sex }_forename.yml"
+    resource_path = "#{ Kovacs.root }/resources/#{ nationality }/#{ sex }_forename.txt"
     read_resource(resource_path)
   end
 
   def middle_names(nationality, sex)
-    resource_path = "#{ Kovacs.root }/resources/#{ nationality }/#{ sex }_forename.yml"
+    resource_path = "#{ Kovacs.root }/resources/#{ nationality }/#{ sex }_forename.txt"
     read_resource(resource_path)
   end
 
   def surnames(nationality)
-    resource_path = "#{ Kovacs.root }/resources/#{ nationality }/surname.yml"
+    resource_path = "#{ Kovacs.root }/resources/#{ nationality }/surname.txt"
     read_resource(resource_path)
   end
 

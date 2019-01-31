@@ -58,31 +58,45 @@ p person
 
 1. *None*: will be generated based on the nationalities, sex and list of names placed in `resources`.
 
-    Kovacs.forename
+```ruby
+Kovacs.forename
+```
 
 2. *Simple String*: the value will be the string argument itself.
 
-    Kovacs.forename('Jancsi')
+```ruby
+Kovacs.forename('Jancsi')
+```
 
 3. *Symbol*: symbol represents the nationality. Value will be generated based on the specified nationality, and sex which is randomly generated.
 
-    Kovacs.forename(:hungarian)
+```ruby
+Kovacs.forename(:hungarian)
+```
 
 4. *Nationality and sex*: Value will be generated based on the spedified nationality and the specified sex.
 
-    Kovacs.forename(:hungarian, :male)
+```ruby
+Kovacs.forename(:hungarian, :male)
+```
 
 5. *Array of Strings*: One of them will be taken randomly.
 
-    Kovacs.forename(['Jancsi', 'Julcsi'])
+```ruby
+Kovacs.forename(['Jancsi', 'Julcsi'])
+```
 
 6. *Array of Symbols*: One of them will be taken randomly, name is taken randomly based on that nationality.
 
-    Kovacs.forename([:hungarian, :slovak])
+```ruby
+Kovacs.forename([:hungarian, :slovak])
+```
 
 7. *Array of Symbols and sex*: Nationality will be taken randomly, name is taken randomly based on that nationality and specified sex. 
 
-  Kovacs.forename([:hungarian, :slovak], :female)
+```ruby
+Kovacs.forename([:hungarian, :slovak], :female)
+```
 
 ## Development
 

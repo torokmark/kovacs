@@ -2,13 +2,25 @@
 
 require 'kovacs'
 
-puts Kovacs::VERSION
+#p Kovacs.generate.to_h
 
-name = Kovacs.config do |config|
-  config.family = :jancsi #'Nagy'
-  config.forename = 'Elek'
-  config.middle = 'Karoly'
+person = Kovacs.config do |config|
+  config.surname     = :hungarian
+  config.forename    = 'Elek'
+  config.middle_name = ['Karoly', 'Erno', 'Ervin']
+  config.sex         = :male
+  config.nationality = [:hungarian, :slovak]
 end.generate
 
-p name
+p person
 
+=begin
+p Kovacs.forename
+p Kovacs.forename('Jancsi')
+p Kovacs.forename(:hungarian)
+p Kovacs.forename(:hungarian, :male)
+p Kovacs.forename(['Jancsi', 'Julcsi'])
+p Kovacs.forename([:hungarian, :slovak])
+p Kovacs.forename([:hungarian, :slovak], :female)
+#p Kovacs.forename([:hungarian, 'slovak'])
+=end

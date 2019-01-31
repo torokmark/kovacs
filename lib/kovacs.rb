@@ -1,12 +1,11 @@
-require "kovacs/configuration"
-require "kovacs/generator"
+require "kovacs/configurator"
+require "kovacs/generators"
 
 module Kovacs
+  extend Kovacs::Configurator
+  extend Kovacs::Generators
 
-  def self.config
-    @config ||= Configuration.new
-    yield(@config)
-    Generator.new(@config)
+  def self.root
+    File.dirname __dir__
   end
-
 end

@@ -1,5 +1,5 @@
 module Kovacs
   class Configuration
-    attr_accessor :family, :given, :middle, :nationality, :gender
+    attr_accessor :nationality, :sex, :forename, :surname, :middle_name
   end
 end

@@ -4,17 +4,17 @@ RSpec.describe Kovacs do
   end
 
   it "does something useful" do
-    name = Kovacs.config do |a|
-      a.family =  '' 
-    end
-    expect(name.generate).to eq('too')
+    person = Kovacs.config do |a|
+      a.surname = 'Doe'
+    end.generate
+    expect(person.surname).to eq('Doe')
   end
-
-  it 'generates a name out of nationality if it is a string'
-  it 'generates a name out of nationality if it is a symbol'
-  it 'generates a name out of one of the nationalities if it is an array of strings'
-  it 'generates a name out of one of the nationalities if it is an array of symbols'
-  it 'takes the value of string for family name if its type is string and generates the rest from nationality'
-  it 'generates family name if family name is a symbol identifies a nationality and rest is generated from nationality'
-  it 'generates a female forename if gender is set to female'
+  
+  it 'generates forename from resources randomly'
+  it 'generates forename from specified string if string argument is given and forename equals to argument'
+  it 'generates forename from specified nationality if symbol argument is given'
+  it 'generates male forename if nationality and sex are specified'
+  it 'generates forename chosen randomly one from the array of strings'
+  it 'generates forename chosen randomly one of the nationalities from array of symbols'
+  it 'generates female forename based on nationality chosen randomly from array of symbols'
 end

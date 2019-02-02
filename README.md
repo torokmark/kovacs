@@ -1,5 +1,7 @@
 # Kovacs
 
+[![Build Status](https://travis-ci.org/torokmark/kovacs.svg?branch=master)](https://travis-ci.org/torokmark/kovacs)
+
 Kovacs is one of the most common surnames in Eastern Europe from Slovakia to Hungary to Croatia. (This is the Hungarian form). It means blacksmith in English. With this gem we can smith names based on nationalities.
 
 Kovacs is a simple gem that helps you generate fake data for a person entity based on real life names, nationalities and sex.

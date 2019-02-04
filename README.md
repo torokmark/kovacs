@@ -1,6 +1,7 @@
 # Kovacs
 
 [![Build Status](https://travis-ci.org/torokmark/kovacs.svg?branch=master)](https://travis-ci.org/torokmark/kovacs)
+[![Gem Version](https://badge.fury.io/rb/kovacs.svg)](https://badge.fury.io/rb/kovacs)
 
 Kovacs is one of the most common surnames in Eastern Europe from Slovakia to Hungary to Croatia. (This is the Hungarian form). It means blacksmith in English. With this gem we can smith names based on nationalities.
 
